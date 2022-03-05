@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs')%>     
+      <div class="leftContainer">
+      </div>
+      <div class="middleContainer">
+        <h3 class="eventTitle"><%=event.title%></h3>
+          <ul class="eventTop">
+            <img src=<%=event.image%> alt="UNCC Tailgate">
+            <li class="host">Host: <%=event.host%></li>
+            <li class="date">Date: <%=event.date%></li>
+            <li class="time">StartTime: <%=event.startTime%></li>
+            <li class="time">EndTime: <%=event.endTime%></li>
+            <li class="location">Location: <%=event.location%></li>
+          </ul>
+          <div class="eventBottom">
+            <h3>Details</h3>
+            <ul>
+                <li><%=event.details%></li>
+            </ul>
+        </div>
+      </div>  
+      <div class="rightContainer">
+        <a href="#"><button>Update</button></a>
+        <a href="#"><button>Delete</button></a>
+      </div>
+<%- include('../partials/footer.ejs')%>
