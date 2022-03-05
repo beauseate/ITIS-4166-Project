@@ -18,6 +18,7 @@ exports.create = (req, res)=>{
 
 exports.show = (req, res, next)=>{
     let id = req.params.id;
+    let url = req.params.image;
     let event = model.findById(id);
     if(event){
         res.render('./event/connection', {event});

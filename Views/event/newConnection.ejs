@@ -1,26 +1,28 @@
 <%- include('../partials/header.ejs')%>    
-      <div class="leftContainer">
-      </div>
+      <div class="leftContainer"></div>
       <div class="middleContainer">
-          <form class="formContainer" action="../Views/connections.html">
-            <h3 class="topicTitle">Topic</h3>
-            <input type="text" placeholder="Topic">
+          <form class="formContainer" action = '/events' method = 'POST'>
+            <h3 class="topicTitle">Category</h3>
+            <select id="category" name="category">
+              <option value="professional">Professional</option>
+              <option value="social">Social</option>
+            </select>
             <h3 class="titleTitle">Title</h3>
-            <input type="text" placeholder="Title">
+            <input type="text" id="title" name="title" placeholder="Title">
             <h3 class="hostTitle">Host</h3>
-            <input type="text" placeholder="Host">
+            <input type="text" id="host" name="host" placeholder="Host">
             <h3 class="detailsTitle">Details</h3>
-            <input type="text" placeholder="Details">
+            <input type="text" id="details" name="details" placeholder="Details">
             <h3 class="locationTitle">Location</h3>
-            <input type="text" placeholder="Location">
+            <input type="text" id="location" name="location" placeholder="Location">
             <h3 class="dateTitle">Date</h3>
-            <input type="date">
+            <input type="date" id="date" name="date">
             <h3 class="startTitle">Start</h3>
-            <input type="time">
+            <input type="time" id="startTime" name="startTime">
             <h3 class="endTitle">End</h3>
-            <input type="time">
+            <input type="time" id="endTime" name="endTime">
             <h3 class="imageTitle">Image URL</h3>
-            <input type="text" placeholder="Image URL">
+            <input type="text" id="image" name="image" placeholder="Image URL">
             <input class="submitEventForm" type="submit" value="Submit">
           </form>
       </div>  

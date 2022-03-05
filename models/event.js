@@ -101,7 +101,14 @@ exports.updateById = function(id, newEvent){
     let event = exports.findById(id);
     if(event){
         event.title = newEvent.title;
-        event.content = newEvent.content;
+        event.category = newEvent.category;
+        event.details = newEvent.details;
+        event.location = newEvent.location;
+        event.date = newEvent.date;
+        event.startTime = newEvent.startTime;
+        event.endTime = newEvent.endTime;
+        event.host = newEvent.host;
+        event.image = newEvent.image;
         return true;
     } else{
         return false;
@@ -116,4 +123,8 @@ exports.deleteById = function(id){
     } else{
         return false;
     }
+}
+
+exports.checkURL = function(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }

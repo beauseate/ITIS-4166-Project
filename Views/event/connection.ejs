@@ -4,7 +4,7 @@
       <div class="middleContainer">
         <h3 class="eventTitle"><%=event.title%></h3>
           <ul class="eventTop">
-            <img src=<%=event.image%> alt="UNCC Tailgate">
+            <% if(event.image){%><img src=<%=event.image%>><%}%>
             <li class="host">Host: <%=event.host%></li>
             <li class="date">Date: <%=event.date%></li>
             <li class="time">StartTime: <%=event.startTime%></li>
@@ -18,7 +18,9 @@
           <div class="eventBottom"></div>
       </div>  
       <div class="rightContainer">
-        <a href="#"><button>Update</button></a>
-        <a href="#"><button>Delete</button></a>
+        <form>
+          <button type="submit" formmethod="GET" formaction="/events/<%=event.id%>/edit">Update</button>
+          <button type="submit" formmethod="POST" formaction="/events/<%=event.id%>?_method=DELETE">Delete</button>
+        </form>
       </div>
 <%- include('../partials/footer.ejs')%>
