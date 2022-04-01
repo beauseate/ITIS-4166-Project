@@ -2,7 +2,9 @@
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const mongoose = require('mongoose');
 const eventRoutes = require('./routes/eventRoutes');
+const mainRoutes = require('./routes/mainRoutes');
 
 //create app
 const app = express();
@@ -10,27 +12,27 @@ const app = express();
 //configure app
 let port = 3000;
 let host = 'localhost';
+let url = 'mongodb://localhost:27017/NBAD';
 app.set('view engine', 'ejs');
 
-//mount middleware
+//connect to mongoDB
+mongoose.connect(url)
+.then(()=>{
+    
+//start the server
+app.listen(port, host, ()=>{
+    console.log('Server is running on port', port);
+});
+})
+.catch(err=> console.log(err.message));
+
+//mount middlware
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('tiny'));
-app.use(methodOverride("_method"));
+app.use(methodOverride('_method'));
 
-//set up routes
-app.get('/', (req, res)=>{
-    res.render('index');
-})
-
-app.get('/about', (req, res)=>{
-    res.render('about');
-})
-
-app.get('/contact', (req, res)=>{
-    res.render('contact');
-})
-
+app.use('/', mainRoutes);
 app.use('/events', eventRoutes);
 
 app.use((req, res, next)=>{
