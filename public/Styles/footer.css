@@ -44,12 +44,10 @@
     background-color: rgb(197, 197, 197);
     padding: 10px;
     text-align: center;
-    height: 100%;
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: auto;
+    position: absolute;
   }
   
   .fa-twitter{

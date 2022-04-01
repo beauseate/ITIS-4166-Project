@@ -1,9 +1,9 @@
 mongo
 use NBAD
 
-db.events.insertOne({ title: "Alumni Career Fair", category: "professional", details: "Come to the Alumni Career Fair!", location: "Atkins Library", date: "9-25-22", startTime: "12:00pm", endTime: "3:00pm", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
-db.events.insertOne({ title: "2022 Alumni Tailgate", category: "social", details: "Come to the Alumni Tailgate!", location: "Alumni Pavilion", date: "11-04-22", startTime: "5:00pm", endTime: "9:00pm", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
-db.events.insertOne({ title: "LinkedIn Connect Party", category: "professional", details: "Come to the LinkedIn Connect Party!", location: "Online", date: "1-30-22", startTime: "12:00pm", endTime: "3:00pm", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
-db.events.insertOne({ title: "Meet and Eat with Job Co.", category: "professional", details: "Come to the Meet and Eat with Job Co.!", location: "Online", date: "1-30-22", startTime: "12:00pm", endTime: "3:00pm", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
-db.events.insertOne({ title: "4th Annual Class of 2018 Hot Dog Cookout", category: "social", details: "Come to the 4th Annual Class of 2018 Hot Dog Cookout!", location: "Online", date: "1-30-22", startTime: "12:00pm", endTime: "3:00pm", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
-db.events.insertOne({ title: "UNCC Family Weekend", category: "social", details: "Come to UNCC Family Weekend!", location: "Online", date: "1-30-22", startTime: "12:00pm", endTime: "3:00pm", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
+db.events.insertOne({ title: "Alumni Career Fair", category: "professional", details: "Come to the Alumni Career Fair!", location: "Atkins Library", date: "2022-09-22", startTime: "13:30", endTime: "18:30", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
+db.events.insertOne({ title: "2022 Alumni Tailgate", category: "social", details: "Come to the Alumni Tailgate!", location: "Alumni Pavilion", date: "2022-11-04", startTime: "13:30", endTime: "18:30", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
+db.events.insertOne({ title: "LinkedIn Connect Party", category: "professional", details: "Come to the LinkedIn Connect Party!", location: "Online", date: "2022-01-30", startTime: "13:30", endTime: "18:30", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
+db.events.insertOne({ title: "Meet and Eat with Job Co.", category: "professional", details: "Come to the Meet and Eat with Job Co.!", location: "Online", date: "2022-01-30", startTime: "13:30", endTime: "18:30", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
+db.events.insertOne({ title: "4th Annual Class of 2018 Hot Dog Cookout", category: "social", details: "Come to the 4th Annual Class of 2018 Hot Dog Cookout!", location: "Online", date: "2022-01-30", startTime: "13:30", endTime: "18:30", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
+db.events.insertOne({ title: "UNCC Family Weekend", category: "social", details: "Come to UNCC Family Weekend!", location: "Online", date: "2022-01-30", startTime: "13:30", endTime: "18:30", host: "Not Beau", image: "../IMG/UNCCTailgate.jpg"})
