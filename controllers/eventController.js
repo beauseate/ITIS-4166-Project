@@ -1,24 +1,23 @@
-const model = require('../models/event')
-exports.index = (req, res)=>{
-    //res.send('send all events');
-    let events = model.find();
-    res.render('./event/connections', {events})
+const model = require('../models/event');
+exports.connections = (req, res)=>{
+    //res.send('send all stories');
+    model.find()
+    .then(events=>res.render('./event/connections', {events}))
+    .catch(err=>next(err));
 };
 
-exports.new = (req, res)=>{
+exports.newConnection = (req, res)=>{
     res.render('./event/newConnection');
 };
 
-exports.create = (req, res)=>{
-    //res.send('Created a new event');
+exports.createConnection = (req, res)=>{
     let event = req.body;
     model.save(event);
     res.redirect('/events');
 };
 
-exports.show = (req, res, next)=>{
+exports.showConnection = (req, res, next)=>{
     let id = req.params.id;
-    let url = req.params.image;
     let event = model.findById(id);
     if(event){
         res.render('./event/connection', {event});
@@ -29,7 +28,7 @@ exports.show = (req, res, next)=>{
     }
 };
 
-exports.edit = (req, res, next)=>{
+exports.editConnection = (req, res, next)=>{
     let id = req.params.id;
     let event = model.findById(id);
     if(event){
@@ -41,7 +40,7 @@ exports.edit = (req, res, next)=>{
     }
 };
 
-exports.update = (req, res, next)=>{
+exports.updateConnection = (req, res, next)=>{
     let event = req.body;
     let id = req.params.id;
     if(model.updateById(id, event)){
@@ -53,7 +52,7 @@ exports.update = (req, res, next)=>{
     }
 };
 
-exports.delete = (req, res, next)=>{
+exports.deleteConnection = (req, res, next)=>{
     let id = req.params.id;
     if(model.deleteById(id)){
         res.redirect('/events');
