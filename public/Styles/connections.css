@@ -42,7 +42,8 @@
   .middleContainer,
   .rightContainer {
     padding: 10px;
-    height: 15rem;
+    height: 25rem;
+    margin-bottom: 150px;
   }
   
   /* Style the left column */

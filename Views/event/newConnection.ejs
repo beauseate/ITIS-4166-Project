@@ -3,23 +3,23 @@
       <div class="middleContainer">
           <form class="formContainer" action = '/events' method = 'POST'>
             <h3 class="topicTitle">Category</h3>
-            <input type="text" id="category" name="category" placeholder="Category">
+            <input type="text" id="category" name="category" placeholder="Category" required>
             <h3 class="titleTitle">Title</h3>
-            <input type="text" id="title" name="title" placeholder="Title">
+            <input type="text" id="title" name="title" placeholder="Title" required>
             <h3 class="hostTitle">Host</h3>
-            <input type="text" id="host" name="host" placeholder="Host">
+            <input type="text" id="host" name="host" placeholder="Host" required>
             <h3 class="detailsTitle">Details</h3>
-            <input type="text" id="details" name="details" placeholder="Details">
+            <input type="text" id="details" name="details" placeholder="Details" required minlength="10">
             <h3 class="locationTitle">Location</h3>
-            <input type="text" id="location" name="location" placeholder="Location">
+            <input type="text" id="location" name="location" placeholder="Location" required>
             <h3 class="dateTitle">Date</h3>
-            <input type="date" id="date" name="date">
+            <input type="date" id="date" name="date" required>
             <h3 class="startTitle">Start</h3>
-            <input type="time" id="startTime" name="startTime">
+            <input type="time" id="startTime" name="startTime" required>
             <h3 class="endTitle">End</h3>
-            <input type="time" id="endTime" name="endTime">
+            <input type="time" id="endTime" name="endTime" required>
             <h3 class="imageTitle">Image URL</h3>
-            <input type="text" id="image" name="image" placeholder="Image URL">
+            <input type="text" id="image" name="image" placeholder="Image URL" required>
             <input class="submitEventForm" type="submit" value="Submit">
           </form>
       </div>  

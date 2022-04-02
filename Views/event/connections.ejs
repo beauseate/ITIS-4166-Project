@@ -2,19 +2,15 @@
       <div class="leftContainer">
         <div class="displayEvents">
             <% if(events.length){ %>
-                <h1>Select an event to learn more!</h1>
-                <h3>Professional</h3>
-                <%events.forEach(event=>{%>
-                    <% if(event.category === 'professional'){ %>
-                    <a href = "/events/<%=event.id%>"> <p><%= event.title %></p></a>
-                    <%}%>
-                <%})%>
-                <h3>Social</h3>
-                <%events.forEach(event=>{%>
-                    <% if(event.category === 'social'){ %>
-                    <a href = "/events/<%=event.id%>"> <p><%= event.title %></p></a>
-                    <%}%>
-                <%})%>
+                <h1>Select a event to learn more!</h1>
+                <%for (item of categories.values()){%>
+                    <h3><%=item%></h3>
+                    <%events.forEach(event=>{%>
+                        <% if(event.category == item){%>
+                            <a href = "/events/<%=event.id%>"> <p><%= event.title %></p></a>
+                        <%}%>
+                    <%})%>
+                <%}%> 
             <%} else{%><p>There are no connections to display</p><%}%>
         </div>
       </div>
