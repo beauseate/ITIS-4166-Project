@@ -5,7 +5,7 @@
         <h3 class="eventTitle"><%=event.title%></h3>
           <ul class="eventTop">
             <% if(event.image){%><img src=<%=event.image%>><%}%>
-            <li class="host">Host: <%=event.host%></li>
+            <li class="host">Host: <%= event.host.firstName + ' ' + event.host.lastName%></li>
             <li class="date">Date: <%=event.date%></li>
             <li class="time">StartTime: <%=event.startTime%></li>
             <li class="time">EndTime: <%=event.endTime%></li>

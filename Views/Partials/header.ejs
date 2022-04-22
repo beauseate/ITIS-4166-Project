@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Styles/index.css">
     <link rel="stylesheet" href="/Styles/newConnection.css">
     <link rel="stylesheet" href="/Styles/connections.css">
     <link rel="stylesheet" href="/Styles/connection.css">
@@ -22,11 +23,34 @@
         <nav>
             <ul class="userSpecificNav">
                     <li><a href='/events/newConnection'>Create New Event</a></li>
-                    <li><a href="#">Sign Up</a></li>
-                    <li><a href="#">Log In</a></li>
+                    <%if(!user) {%>
+                      <li><a href='/users/new'>Sign Up</a></li>
+                      <li><a href='/users/login'>Login</a></li>
+                  <%} else {%>
+                      <li><a href='/users/profile'>Profile</a></li>
+                      <li><a href='/users/logout'>Logout</a></li>
+                  <%}%>
             </ul>
             <ul class="generalSiteNav">
                     <li><a href='/events'>Upcoming Events</a></li>
             </ul>
         </nav>
+      </div>
+      <div>
+        <% if(errorMessages.length > 0) {%>
+          <% errorMessages.forEach(message=>{%>
+              <div class='error'>
+                  <%=message%>
+              </div>
+              <%});%>
+                  <%}%>
+      
+                      <% if(successMessages.length > 0) {%>
+      
+                          <% successMessages.forEach(message=>{%>
+                              <div class='success'>
+                                  <%=message%>
+                              </div>
+                              <%});%>
+                                  <%}%>
       </div>

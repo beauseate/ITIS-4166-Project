@@ -9,7 +9,7 @@ const eventSchema = new Schema({
     date: {type: String, required: [true, 'date is required']},
     startTime: {type: String, required: [true, 'start time is required']},
     endTime: {type: String, required: [true, 'end time is required']},
-    host: {type: String, required: [true, 'host is required']},
+    host: {type: Schema.Types.ObjectId, ref: 'User'},
     image: {type: String, required: [true, 'image URL is required']},},
 );
 
