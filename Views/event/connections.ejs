@@ -1,8 +1,10 @@
+<%- include('../partials/alertBar.ejs')%>  
 <%- include('../partials/header.ejs')%>      
+
       <div class="leftContainer">
         <div class="displayEvents">
             <% if(events.length){ %>
-                <h1>Select a event to learn more!</h1>
+                <h1>Select an event to learn more!</h1>
                 <%for (item of categories.values()){%>
                     <h3><%=item%></h3>
                     <%events.forEach(event=>{%>

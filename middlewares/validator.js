@@ -26,7 +26,13 @@ exports.validateLogin =
 
 exports.validateEvent = 
     [body('title', "Title Name cannot be empty").notEmpty().trim().escape(),
-    body('content', 'Content must be atleast 10 characters').isLength({min: 10}).trim().escape()];
+    body('details', 'Details must be atleast 10 characters').isLength({min: 10}).trim().escape(),
+    body('category', "Category cannot be empty").notEmpty().trim().escape(),
+    body('location', "Location cannot be empty").notEmpty().trim().escape(),
+    body('date', "Date cannot be empty").notEmpty().trim().escape(),
+    body('startTime', "Satrt Time cannot be empty").notEmpty().trim().escape(),
+    body('endTime', "End Time cannot be empty").notEmpty().trim().escape(),
+];
 
 
 exports.validateResult = (req, res, next)=>{

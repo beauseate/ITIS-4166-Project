@@ -1,3 +1,4 @@
+<%- include('../partials/alertBar.ejs')%>  
 <%- include('../partials/header.ejs')%>    
       <div class="leftContainer"></div>
       <div class="middleContainer">
@@ -6,8 +7,6 @@
             <input type="text" id="category" name="category" value = "<%= event.category%>" required>
             <h3 class="titleTitle">Title</h3>
             <input type="text" id="title" name="title" value = "<%= event.title%>" required>
-            <h3 class="hostTitle">Host</h3>
-            <input type="text" id="host" name="host" value = "<%= event.host%>" required>
             <h3 class="detailsTitle">Details</h3>
             <input type="text" id="details" name="details" value = "<%= event.details%>" required minlength="10">
             <h3 class="locationTitle">Location</h3>

@@ -54,47 +54,26 @@ exports.showConnection = (req, res, next)=>{
 
 exports.editConnection = (req, res, next)=>{
     let id = req.params.id;
-    //obj id is 24 bits hexadecmal string
-    if(!id.match(/^[0-9a-fA-F]{24}$/)) {
-            let err = new Error('Invalid event ID');
-            err.status = 400;
-            return next(err);
-    }
     model.findById(id)
     .then(event=>{
-        if(event) {
-            return res.render('./event/edit', {event});
-        } else {
-            let err = new Error('Cannot find a event with id ' + id);
-            err.status = 404;
-            next(err);
-        }
+        return res.render('./event/edit', {event});
     })
-    .catch(err=>next(err))
+    .catch(err=>next(err));
 };
 
 exports.updateConnection = (req, res, next)=>{
     let event = req.body;
     let id = req.params.id;
-    //obj id is 24 bits hexadecmal string
-    if(!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid event ID');
-        err.status = 400;
-        return next(err);
-    }
+
     model.findByIdAndUpdate(id, event, {useFindAndModify: false, runValidators: true})
     .then(event=>{
-        if(event){
-            res.redirect('/events/'+id);
-        } else {
-            let err = new Error('Cannot find a event with id ' + id);
-                err.status = 404;
-                next(err);
-           }
+        req.flash('success', 'Event has been updated successfully');
+        return res.redirect('/events/'+id);
     })
-    .catch(err=>{
-        if(err.name === 'ValidationError'){
-            err.status = 400;
+    .catch(err=> {
+        if(err.name === 'ValidationError') {
+            req.flash('error', err.message);
+            return res.redirect('/back');
         }
         next(err);
     });
@@ -102,20 +81,11 @@ exports.updateConnection = (req, res, next)=>{
 
 exports.deleteConnection = (req, res, next)=>{
     let id = req.params.id;
-    if(!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid event ID');
-        err.status = 400;
-        return next(err);
-    }
+    
     model.findByIdAndDelete(id, {useFindAndModify: false})
-    .then(event=>{
-        if(event){
-            res.redirect('/events');
-        }else {
-        let err = new Error('Cannot find a event with id ' + id);
-        err.status = 404;
-        next(err);
-        }
+    .then(event =>{
+        req.flash('success', 'Event has been deleted successfully');
+        res.redirect('/events');
     })
     .catch(err=>next(err));
 };

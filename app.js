@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 const mainRoutes = require('./routes/mainRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const userRoutes = require('./routes/userRoutes');
+const user = require('./models/user');
 
 //create app
 const app = express();
@@ -35,16 +36,22 @@ app.use(
         resave: false,
         saveUninitialized: false,
         store: new MongoStore({mongoUrl: 'mongodb://localhost:27017/NBAD'}),
-        cookie: {maxAge: 60*60*1000}
+        cookie: {maxAge: 60*60*1000},
         })
 );
 app.use(flash());
 
 app.use((req, res, next) => {
-    //console.log(req.session);
+
     res.locals.user = req.session.user||null;
     res.locals.errorMessages = req.flash('error');
     res.locals.successMessages = req.flash('success');
+    user.findById(res.locals.user)
+    .then(user=>{
+        if(user){
+        app.locals.Name = (user.firstName + ' ' + user.lastName);
+        }
+    })
     next();
 });
 

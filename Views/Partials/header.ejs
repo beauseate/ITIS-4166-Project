@@ -19,38 +19,23 @@
     <div class="grid-container">
       <div class="header">
         <a href='/'><img src="/IMG/CharlotteC.png" class="navBarLogo" alt="UNCC Logo"></a>
+        <%if(user){%>
+          <div class="title">Welcome <%=Name %></div>
+        <%}%>
         <h2 class="title">UNCC Alumni Events</h2>
         <nav>
             <ul class="userSpecificNav">
-                    <li><a href='/events/newConnection'>Create New Event</a></li>
-                    <%if(!user) {%>
-                      <li><a href='/users/new'>Sign Up</a></li>
-                      <li><a href='/users/login'>Login</a></li>
+                  <%if(!user) {%>
+                    <li><a href='/users/new'>Sign Up</a></li>
+                    <li><a href='/users/login'>Login</a></li>
                   <%} else {%>
-                      <li><a href='/users/profile'>Profile</a></li>
-                      <li><a href='/users/logout'>Logout</a></li>
+                    <li><a href='/events/newConnection'>Create New Event</a></li>
+                    <li><a href='/users/profile'>Profile</a></li>
+                    <li><a href='/users/logout'>Logout</a></li>
                   <%}%>
             </ul>
             <ul class="generalSiteNav">
                     <li><a href='/events'>Upcoming Events</a></li>
             </ul>
         </nav>
-      </div>
-      <div>
-        <% if(errorMessages.length > 0) {%>
-          <% errorMessages.forEach(message=>{%>
-              <div class='error'>
-                  <%=message%>
-              </div>
-              <%});%>
-                  <%}%>
-      
-                      <% if(successMessages.length > 0) {%>
-      
-                          <% successMessages.forEach(message=>{%>
-                              <div class='success'>
-                                  <%=message%>
-                              </div>
-                              <%});%>
-                                  <%}%>
       </div>
