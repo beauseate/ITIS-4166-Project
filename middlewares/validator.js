@@ -1,4 +1,5 @@
 const {validationResult} = require('express-validator');
+const validator = require('validator');
 const {body} = require('express-validator');
 
 exports.validateId = (req, res, next)=>{
@@ -12,7 +13,6 @@ exports.validateId = (req, res, next)=>{
         return next();
     }
 };
-
 exports.validateSignUp = 
 
     [body('firstName', "First Name cannot be empty").notEmpty().trim().escape(),
@@ -32,6 +32,8 @@ exports.validateEvent =
     body('date', "Date cannot be empty").notEmpty().trim().escape(),
     body('startTime', "Satrt Time cannot be empty").notEmpty().trim().escape(),
     body('endTime', "End Time cannot be empty").notEmpty().trim().escape(),
+    body('image', "Image cannot be empty").notEmpty().trim()
+
 ];
 
 
@@ -46,4 +48,70 @@ exports.validateResult = (req, res, next)=>{
         return next();
     }
 }
+
+exports.isDate = (req, res, next)=>{
+    let date = req.body.date;
+    if(validator.isDate(date)){
+        return next();
+    } else{
+        let err = new Error('Invalid date');
+        req.flash('error', err.msg);
+        err.status = 400;
+        return next(err);
+    }
+}
+
+exports.isAfter = (req, res, next)=>{
+    let date = req.body.date;
+    if(validator.isAfter(date)){
+        return next();
+    } else{
+        let err = new Error('Date is back in time!');
+        req.flash('error', err.msg);
+        err.status = 400;
+        return next(err);
+    }
+}
+
+exports.startMatches =  (req, res, next)=>{
+    let startTime = req.body.startTime;
+    var validate = new RegExp(/^(([[0|1]\d)|(2[0-3]))[:]?([0-5]\d)$/);
+    if(validate.test(startTime)){
+        return next();
+    } else{
+        let err = new Error('Start time is not valid!');
+        req.flash('error', err.msg);
+        err.status = 400;
+        return next(err);
+    }
+}
+
+
+ exports.endMatches =  (req, res, next)=>{
+    let endTime = req.body.endTime;
+    var validate = new RegExp(/^(([[0|1]\d)|(2[0-3]))[:]?([0-5]\d)$/);
+    if(validate.test(endTime)){
+        return next();
+    } else{
+        let err = new Error('End time is not valid!');
+        req.flash('error', err.msg);
+        err.status = 400;
+        return next(err);
+    }
+}
+
+exports.validTime =  (req, res, next)=>{
+    let startTime = parseInt(req.body.startTime);
+    let endTime = parseInt(req.body.endTime);
+    if(startTime - endTime > 0){
+        let err = new Error('You start time is before your end time!');
+        req.flash('error', err.msg);
+        err.status = 400;
+        return next(err);
+    } else{
+        return next();
+    }
+}
+
+
 

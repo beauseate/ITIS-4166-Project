@@ -25,7 +25,25 @@
         <%} else {%>
             <p>You have not created any events</p>
         <%}%>
-
     </table>
+    <%if(rsvp.length){%>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Going?</th>
+            </tr>
+        <p>You have RSVP'd to the following events</p>
+        <%rsvp.forEach(rsvp => {%>
+        <tr>
+            <td><a href = '/events/<%= rsvp.eventID%>'><p><%=rsvp.eventTitle%></a></td>
+            <td><%=rsvp.eventCategory%></td>
+            <td>Yes</td>
+        </tr>
+        <%});%>
+    <%} else {%>
+        <p>You have not RSVP'd to any events</p>
+    <%}%>
+</table>
     </div>
     <%- include('../partials/footer.ejs')%>

@@ -41,3 +41,22 @@ exports.isHost = (req, res, next) =>{
     })
     .catch(err=>next(err));
 };
+
+exports.isEventOwnerToNotRSVP = (req, res, next) =>{
+let eventID = req.params.id;
+Event.findById(eventID)
+.then(event=>{
+    if(event) {
+        if(event.host == req.session.user) {
+            let err = new Error('Unauthorized to access the resource');
+            err.status = 401;
+            return next(err);
+        } else{
+            return next();
+        }
+    }
+})
+.catch(err=>{
+    next(err);
+})
+};
